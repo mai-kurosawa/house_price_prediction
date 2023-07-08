@@ -2,9 +2,11 @@
 
 ## Setup
 - Python 3.10.6
-- pandas
-- scikit-learn
-- xgboost
+- pipenv
+
+```shell
+pipenv install
+```
 
 ## Run
 Download datasets [here](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/data) and unzip the file.
