@@ -26,9 +26,9 @@ def load_data(dir_path, model_features, numerical_features, model_target):
     #Drop outliers
     dropindex_totalbsmtsq = train_df[train_df[numerical_features[3]] > 5499].index
     train_df.drop(dropindex_totalbsmtsq, inplace=True)
+
     x_full_train, y_full_train = train_df[model_features].to_numpy(), train_df[model_target].to_numpy()
     x_test = test_df[model_features].to_numpy()
-
     return x_full_train, y_full_train, x_test, test_df[['Id']]
 
 
@@ -59,7 +59,6 @@ def build_pipeline(numerical_features, categorical_features):
         ('data_processing', data_processor),
         ('model', XGBRegressor())
      ])
-
     return pipeline
 
 
@@ -71,7 +70,6 @@ def search_hyperparameter(pipeline):
         'model__reg_alpha': [1, 0.1, 0.01]
     }
     grid_search = GridSearchCV(pipeline, param_grid, cv=10, verbose=1, n_jobs=-1)
-
     return grid_search
 
 
